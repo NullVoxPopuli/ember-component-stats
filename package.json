@@ -5,7 +5,7 @@
   "repository": "git@github.com:NullVoxPopuli/ember-component-stats.git",
   "author": "NullVoxPopuli <LPSego3+dev@gmail.com>",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "bin": {
     "ember-component-stats": "./dist/index.js"
   },

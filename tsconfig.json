@@ -3,7 +3,7 @@
   "compilerOptions": {
     // Type-check against the current version of JavaScript's standard library,
     // most closely matching what is present in evergreen browsers.
-    "target": "esnext",
+    "target": "es2015",
 
     // We target native modules, since they are the future o
     "module": "es2015",
