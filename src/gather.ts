@@ -63,7 +63,7 @@ export function gatherComponentInfo({
     fileName === 'index';
 
   if (!isTemplate && !isComponentJs) {
-    console.log(filePath, fileName);
+    // console.log(filePath, fileName);
     return;
   }
 
