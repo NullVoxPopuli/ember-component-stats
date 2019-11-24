@@ -1,0 +1,71 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Type-check against the current version of JavaScript's standard library,
+    // most closely matching what is present in evergreen browsers.
+    "target": "es2019",
+
+    // We target native modules, since they are the future o
+    "module": "es2015",
+
+    "lib": ["esnext", "es2020.string"],
+    "allowSyntheticDefaultImports": true,
+
+    // Do not type-check JavaScript in the project. Users can opt into this if
+    // they wish, but in general we want to guide people to the happier and
+    // easier path of just using TypeScript throughout.
+    "allowJs": false,
+
+    // We generate a "rollup" of the types into a single output file in the root
+    // directory during build, so that TS correctly looks up the types for the
+    // whole package. Here we tell `tsc` to emit to a single `outFile`...
+    "outFile": "index.js",
+    // ... but to emit only the declaration, so no `index.js` will actually be
+    // generated, only an `index.d.ts` along with its source maps. (The source
+    // will be compiled by Babel instead.)
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+
+    // Generate source maps for the declarations for nice tooling benefits. Note
+    // that unlike regular source maps, these are always emitted *beside* the
+    // declaration file and require access to the source. Since types are
+    // inherently dev-only, this works perfectly.
+    "declaration": true,
+    "declarationMap": true,
+
+    // Put the build info file for incremental compilation information in the
+    // `dist` directory so that it stays out of the way in most views of the
+    // workspace (and with leading `.` so that it's hidden in general).
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+
+    // We set `strict: true` because we always want this project and those it
+    // generates to begin with the current strictest settings TypeScript allows.
+    // Note that this *requires* that adopting any TypeScript release (major or
+    // minor) which introduces a new strictness setting constitutes a breaking
+    // change for this generator.
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Use standard Node module resolution: that is how basically *everything*
+    // expects to be able to resolve modules now. We do not otherwise need to
+    // tweak the lookup paths.
+    "moduleResolution": "node",
+
+    // Explicitly disable `esModuleInterop`: we want consumers to use ES Modules
+    // explicitly and only, rather than to use the interoperability mode that TS
+    // supplies, because it is *viral* (forcing all consumers to use the same
+    // compatibility mode) and because the future is *everything* being native.
+    "esModuleInterop": false,
+
+    // We enable decorators support so that `tsc` parses correctly and editors
+    // do the right thing automatically if the library happens to be supplying
+    // decorators; many libraries may not need this, but this makes things "just
+    // work" if they *start* to, and has no downsides in terms of generated
+    // output since we are using Babel to do the actual compilation.
+    "experimentalDecorators": true
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "name": "ember-component-stats",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:NullVoxPopuli/ember-component-stats.git",
+  "author": "NullVoxPopuli <LPSego3+dev@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/command-line-args": "^5.0.0",
+    "@types/qunit": "^2.9.0",
+    "@types/walk": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-latest-node": "^3.2.1",
+    "concurrently": "^4.1.2",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.5",
+    "npm-watch": "^0.6.0",
+    "prettier": "^1.18.2",
+    "qunit": "^2.9.3",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.6.2"
+  },
+  "files": [
+    "dist",
+    "index.d.ts",
+    "index.d.ts.map"
+  ],
+  "scripts": {
+    "format": "prettier --write src 'src/**/*'",
+    "lint": "eslint --fix --ext .js,.ts src",
+    "build:js": "babel src --out-dir dist --extensions '.ts'",
+    "build:js-for-tests": "babel src --out-dir tests-js/src --extensions '.ts' --plugins transform-es2015-modules-commonjs",
+    "build:tests": "babel tests --out-dir tests-js/tests --extensions '.ts' --plugins transform-es2015-modules-commonjs",
+    "build:types": "tsc",
+    "clean:js": "rimraf dist",
+    "clean:tests": "rimraf tests-js",
+    "clean:types": "rimraf index.d.ts index.d.ts.map",
+    "build": "concurrently --names \"TYPES,BABEL,LINTS\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.white.bold,bgYellow.black.bold,bgMagenta.white.bold\" \"npm run build:types\" \"npm run build:js\" \"npm run lint\"",
+    "clean": "concurrently --names \"TYPES,BABEL,TESTS\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.white.bold,bgYellow.black.bold,bgGreen.white.bold\"  \"npm run clean:js\" \"npm run clean:types\" \"npm run clean:tests\"",
+    "pretest": "concurrently --names \"BABEL,TESTS\" --prefix \"[{name}]\" --prefix-colors \"bgYellow.black.bold,bgGreen.white.bold\" \"npm run build:js-for-tests\" \"npm run build:tests\"",
+    "test": "qunit 'tests-js/**/*.js'",
+    "prepublishOnly": "npm run build",
+    "watch:js": "babel --watch src --out-dir dist --extensions '.ts'",
+    "watch:types": "npm-watch build:types",
+    "watch:lint": "npm-watch lint",
+    "watch": "concurrently --names \"TYPES,BABEL,LINTS\" --prefix \"[{name}]\" --prefix-colors \"bgBlue.white.bold,bgYellow.black.bold,bgMagenta.white.bold\" \"npm run watch:types\" \"npm run watch:js\" \"npm run watch:lint\""
+  },
+  "watch": {
+    "lint": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts",
+      "quiet": true,
+      "clearBuffer": false
+    },
+    "build:types": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts",
+      "quiet": true,
+      "clearBuffer": false
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "@types/node": "^12.12.12",
+    "command-line-args": "^5.1.1",
+    "extract-tagged-template-literals": "^1.0.3",
+    "walk": "^2.3.14"
+  }
+}

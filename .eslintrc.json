@@ -1,0 +1,28 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/no-parameter-properties": "error",
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "fixToUnknown": true
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "TSEnumDeclaration[const=true]",
+        "message": "Babel cannot compile `const enum`; export simple `const` values instead."
+      }
+    ]
+  }
+}
