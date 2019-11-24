@@ -1,3 +1,5 @@
+* bring back node preset (d4ad2e3)
+
 * switch to commonjs (908c2ad)
 
 * new target (4837dcf)
