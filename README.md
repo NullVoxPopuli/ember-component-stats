@@ -33,6 +33,10 @@ ember-component-stats --path to/app/dir
 Note:
 This currently only works on apps that use:
 - pods for components
-- or nested co-located component
+- nested co-located components
+
+See src/gather.ts for potentially adding support for:
+- classic structure
+- non-nested co-located components
 
 PRs welcome ;)
