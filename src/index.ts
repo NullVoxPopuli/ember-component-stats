@@ -2,12 +2,11 @@
 'use strict';
 
 import { walkSync } from 'walk';
-import { readFileSync } from 'fs';
 import { join } from 'path';
 import cla from 'command-line-args';
 
 import { printComponentInvocationStats } from './printing';
-import { gatherComponentInvocations, COMPONENT_INVOCATIONS } from './gather';
+import { COMPONENT_INVOCATIONS, gatherInfoOnFile } from './gather';
 
 const optionDefinitions = [
   { name: 'ignore', alias: 'i', type: String, multiple: true },
@@ -28,15 +27,7 @@ walkSync(searchPath, {
   filters: [...(ignore || []), 'tests', 'tmp', '.git'],
   listeners: {
     file(root, fileStats, next) {
-      const { name } = fileStats;
-      const filePath = join(root, name);
-      const contents = readFileSync(filePath, 'utf8');
-      const pathParts = filePath.split('.');
-      const ext = pathParts[pathParts.length - 1];
-
-      const fileInfo = { ext, contents };
-
-      gatherComponentInvocations(fileInfo);
+      gatherInfoOnFile(root, fileStats);
 
       next();
     },
