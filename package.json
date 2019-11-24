@@ -40,6 +40,7 @@
     "index.d.ts.map"
   ],
   "scripts": {
+    "release": "release-it -n",
     "format": "prettier --write src 'src/**/*'",
     "lint": "eslint --fix --ext .js,.ts src",
     "build:js": "babel src --out-dir dist --extensions '.ts'",
