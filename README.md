@@ -27,3 +27,12 @@ ember-component-stats
 ember-component-stats --path to/app/dir
 # (app/ is default)
 ```
+
+
+
+Note:
+This currently only works on apps that use:
+- pods for components
+- or nested co-located component
+
+PRs welcome ;)
