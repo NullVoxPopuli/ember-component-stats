@@ -1,3 +1,5 @@
+* switch to commonjs (908c2ad)
+
 * new target (4837dcf)
 
 * update readme (58c1489)
