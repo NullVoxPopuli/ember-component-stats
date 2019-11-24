@@ -6,6 +6,9 @@
   "author": "NullVoxPopuli <LPSego3+dev@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "bin": {
+    "ember-component-stats": "./dist/index.js"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
