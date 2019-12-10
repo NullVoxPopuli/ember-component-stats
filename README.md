@@ -15,6 +15,8 @@ yarn add --global ember-component-stats
 npm install --global ember-component-stats
 ```
 
+*PS: Minimum `node` version required is: `12.x`*
+
 ## Usage
 
 ```
